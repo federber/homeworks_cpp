@@ -2,6 +2,7 @@
 
 #include "utils.hpp"
 
+
 TEST_CASE("SplitString", "[simple]") {
   CHECK(SplitString("") == std::vector<std::string>{});
   CHECK(SplitString("aaa") == std::vector<std::string>{"aaa"});
