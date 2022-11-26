@@ -1,4 +1,7 @@
+#include <math.h>
+
 #include <algorithm>
+#include <exception>
 #include <iostream>
 #include <stack>
 #include <string>
@@ -25,7 +28,6 @@ std::string CalcTwo(std::vector<std::string> vec) {
 }
 
 std::vector<std::string> SplitToTokens(const std::string &data) {
-
   std::vector<char> delimiters = {'+', '-', '*', '/'};
   std::string newdata = data;
   if (newdata[0] == '(' && newdata[newdata.length() - 1] == ')') {
@@ -52,7 +54,7 @@ std::vector<std::string> SplitToTokens(const std::string &data) {
       pr.second = newdata[i];
       ppi.push_back(pr);
     }
-    if ((newdata[i] == ')')) {
+    if (newdata[i] == ')') {
       f--;
       for (int j = 0; j < ppi.size(); j++) {
         newdata[newdata.length() - ppi[j].first] = '_';
@@ -127,6 +129,6 @@ std::vector<std::string> Calc(std::vector<std::string> vec) {
   }
 }
 
-int Calculate(const std::string &data) {
-  return (int)std::atof(Calc(SplitToTokens(data))[0].c_str());
+double Calculate(const std::string &data) {
+  return std::atof(Calc(SplitToTokens(data))[0].c_str());
 }
